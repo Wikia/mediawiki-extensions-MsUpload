@@ -16,8 +16,8 @@ class Hooks {
 	 */
 	public static function onEditPageShowEditFormInitial( EditPage $editPage, OutputPage $out ) {
 		global $wgScriptPath, $wgMSU_useMsLinks, $wgMSU_showAutoCat, $wgMSU_checkAutoCat,
-			$wgMSU_confirmReplace, $wgMSU_useDragDrop, $wgMSU_imgParams, $wgFileExtensions,
-			$wgMSU_uploadsize, $wgMSU_flash_swf_url, $wgMSU_silverlight_xap_url;
+			   $wgMSU_confirmReplace, $wgMSU_useDragDrop, $wgMSU_imgParams, $wgFileExtensions,
+			   $wgMSU_uploadsize, $wgMSU_flash_swf_url, $wgMSU_silverlight_xap_url, $wgExtensionAssetsPath;
 
 		// Don't show the upload bar outside of wikitext pages (T267563)
 		if ( method_exists( MediaWikiServices::getInstance(), 'getWikiPageFactory' ) ) {
@@ -60,7 +60,7 @@ class Hooks {
 
 		// @todo Figure out how to load this in a module without resource loader crashing.
 		$out->addScriptFile(
-			"$wgScriptPath/extensions/MsUpload/resources/plupload/plupload.full.min.js"
+			"{$wgScriptPath}{$wgExtensionAssetsPath}/MsUpload/resources/plupload/plupload.full.min.js"
 		);
 		return true;
 	}
